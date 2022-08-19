@@ -7,7 +7,7 @@
     <ul class="list-group">
         <?php foreach ($ordens as $ordem): ?>
             <li class="list-group-item d-flex justify-content-between">
-                <?= $ordem->getDescricao(); ?>
+                <?= $ordem->getOrdem(); ?>
 
                 <span>
                     <a href="/alterar-ordem?id=<?= $ordem->getId(); ?>" class="btn btn-info btn-sm">

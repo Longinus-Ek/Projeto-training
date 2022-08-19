@@ -2,15 +2,16 @@
 
 namespace Erick\Sistema\Controller;
 
-use Alura\Cursos\Entity\Usuario;
 use SimpleXMLElement;
 use Nyholm\Psr7\Response;
+use Erick\Sistema\Entity\Ordem;
+use Erick\Sistema\Entity\Usuario;
 use Psr\Http\Message\ResponseInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class CursosXml implements RequestHandlerInterface
+class OrdensXml implements RequestHandlerInterface
 {
     public function __construct(EntityManagerInterface $entityManager)
     {
@@ -19,16 +20,16 @@ class CursosXml implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request) : ResponseInterface
     {
-        /** @var Curso[] $cursos */
-        $cursos = $this->respositorioDeCursos->findAll();
-        $cursosEmXml = new SimpleXMLElement('<cursos/>');
+        
+        $ordens = $this->respositorioDeCursos->findAll();
+        $ordensEmXml = new SimpleXMLElement('<ordens/>');
 
-        foreach($cursos as $curso){
-            $cursoEmXml = $cursosEmXml->addChild('curso');
-            $cursoEmXml->addChild('id', $curso->getId());
-            $cursoEmXml->addChild('descricao', $curso->getDescricao());
+        foreach($ordens as $curso){
+            $ordemEmXml = $ordensEmXml->addChild('curso');
+            $ordemEmXml->addChild('id', $ordens->getId());
+            $ordemEmXml->addChild('descricao', $ordens->getDescricao());
         }
-        return new Response(200, ['Content-Type' => 'application/xml'], $cursosEmXml->asXML());
+        return new Response(200, ['Content-Type' => 'application/xml'], $ordemEmXml->asXML());
     }
     
 }

@@ -1,5 +1,6 @@
 <?php
 
+
 use Erick\Sistema\Controller\Deslogar;
 use Erick\Sistema\Controller\Exclusao;
 use Erick\Sistema\Controller\CursosXml;
@@ -14,7 +15,6 @@ use Erick\Sistema\Controller\FormularioCadastro;
 use Erick\Sistema\Controller\FormularioInsercao;
 
 return [
-    '/listar-ordens' => ListarOrdens::class,
     '/nova-ordem' => FormularioInsercao::class,
     '/salvar-ordem' => Persistencia::class,
     '/excluir-ordem' => Exclusao::class,
@@ -25,6 +25,7 @@ return [
     '/cursosEmJson' => CursosJson::class,
     '/cursosEmXml' => CursosXml::class,
     '/cadastro' => FormularioCadastro::class,
-    '/realiza-cadastro' => CadastrarUsuario::class
+    '/realiza-cadastro' => CadastrarUsuario::class,
+    '/listar-ordens' => ListarOrdens::class
 ];
 

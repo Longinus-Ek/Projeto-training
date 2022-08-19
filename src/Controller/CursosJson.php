@@ -9,7 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class CursosJson implements RequestHandlerInterface
+class OrdensJson implements RequestHandlerInterface
 {
     private $repositorioDeCursos;
 

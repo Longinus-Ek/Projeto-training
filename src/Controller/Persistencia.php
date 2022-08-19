@@ -3,6 +3,7 @@
 namespace Erick\Sistema\Controller;
 
 use Nyholm\Psr7\Response;
+
 use Erick\Sistema\Entity\Ordem;
 use Psr\Http\Message\ResponseInterface;
 use Doctrine\ORM\EntityManagerInterface;
@@ -32,7 +33,7 @@ class Persistencia implements RequestHandlerInterface
         );
 
         $ordem = new Ordem();
-        $ordem->setDescricao($descricao);
+        $ordem->setOrdem($descricao);
 
         $id = filter_var(
             $request->getQueryParams()['id'],

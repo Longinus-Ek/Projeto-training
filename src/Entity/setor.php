@@ -6,9 +6,9 @@ use JsonSerializable;
 
 /**
  * @Entity
- * @Table(name="ordens")
+ * @Table(name="setor")
  */
-class Ordem implements JsonSerializable
+class Setor implements JsonSerializable
 {
     /**
      * @Id
@@ -19,7 +19,7 @@ class Ordem implements JsonSerializable
     /**
      * @Column(type="string")
      */
-    private $ordem;
+    private $setor;
 
     public function getId(): int
     {
@@ -31,20 +31,20 @@ class Ordem implements JsonSerializable
         $this->id = $id;
     }
 
-    public function getOrdem(): string
+    public function getSetor(): string
     {
-        return $this->ordem;
+        return $this->setor;
     }
 
-    public function setOrdem(string $ordem): void
+    public function setSetor(string $setor): void
     {
-        $this->ordem = $ordem;
+        $this->setor = $setor;
     }
     public function jsonSerialize() : mixed
     {
         return [
             'id' => $this->id,
-            'ordem' => $this->ordem
+            'setor' => $this->setor
         ];
     }
 }

@@ -14,7 +14,7 @@ class FormularioInsercao implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $html = $this->renderizaHtml('ordem/formulario.php', [
+        $html = $this->renderizaHtml('ordens/formulario.php', [
             'titulo' => 'Nova Ordem de Serviço'
         ]);
         return new Response(200, [], $html);

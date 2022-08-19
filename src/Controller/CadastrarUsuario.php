@@ -23,7 +23,7 @@ class CadastrarUsuario implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $redirecionamentoLogin = new Response(302, ['Location' => '/login']);
-        $redirecionamentoCadastro = new Response(302, ['Location' => '/cadastrar-usuario']);
+        $redirecionamentoCadastro = new Response(302, ['Location' => '/realiza-cadastro']);
 
         $email = filter_var(
             $request->getParsedBody()['email'],

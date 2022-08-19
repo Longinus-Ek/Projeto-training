@@ -45,7 +45,7 @@ class FormularioEdicao implements RequestHandlerInterface
 
         $html = $this->renderizaHtml('ordens/formulario.php', [
             'ordem' => $ordem,
-            'titulo' => 'Alterar curso ' . $ordem->getDescricao(),
+            'titulo' => 'Alterar curso ' . $ordem->getOrdem(),
         ]);
 
         return new Response(200, [], $html);
