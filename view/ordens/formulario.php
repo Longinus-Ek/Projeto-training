@@ -3,11 +3,7 @@
     <form action="/salvar-ordem<?= isset($ordem) ? '?id=' . $ordem->getId() : ''; ?>" method="post">
         <div class="form-group">
             <label for="descricao">Descrição</label>
-            <input type="text"
-                   id="descricao"
-                   name="descricao"
-                   class="form-control"
-                   value="<?= isset($ordem) ? $ordem->getOrdem() : ''; ?>">
+            <input type="text" id="descricao" name="descricao" class="form-control" value="<?= isset($ordem) ? $ordem->getOrdem() : ''; ?>">
         </div>
         <button class="btn btn-primary">Salvar</button>
     </form>

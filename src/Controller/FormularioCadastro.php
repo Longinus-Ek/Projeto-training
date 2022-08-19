@@ -14,10 +14,11 @@ class FormularioCadastro implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        $_SESSION['cadastro'] = true;
         $html = $this->renderizaHtml('cadastro/formulario.php', [
             'titulo' => 'Cadastro novo Usuario'
         ]);
-
+        
         return new Response(200, [], $html);
     }
 }

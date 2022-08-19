@@ -39,7 +39,8 @@ class Persistencia implements RequestHandlerInterface
             $request->getQueryParams()['id'],
             FILTER_VALIDATE_INT
         );
-
+        var_dump($ordem);
+        
         $tipo = 'success';
         if (!is_null($id) && $id !== false) {
             $ordem->setId($id);
