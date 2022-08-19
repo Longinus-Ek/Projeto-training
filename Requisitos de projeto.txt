@@ -1,0 +1,10 @@
+Sistema de Ordem de Serviço
+
+Painel de Login: Usuario e Suporte
+
+A OS vai ter os campos de:
+
+-Titulo
+-Descrição
+-Telefone
+-Setor do problema
