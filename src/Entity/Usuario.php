@@ -10,8 +10,8 @@ class Usuario
 {
     /**
      * @Id
-     * @GeneratedValue
      * @Column(type="integer")
+     * @GeneratedValue
      */
     private $id;
     /**

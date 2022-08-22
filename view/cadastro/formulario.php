@@ -1,5 +1,5 @@
 <?php include __DIR__ . '/../inicio-html.php'; ?>
-    <form action="/realiza-cadastro <?= isset($ordem) ? '?id=' . $ordem->getId() : ''; ?>" method="post">
+    <form action="/realiza-cadastro" method="post">
         <div class="form-group">
             <label for="email">E-mail:</label>
             <input type="email" name="email" id="email" class="form-control">
@@ -13,7 +13,12 @@
             <input type="password" name="senha2" id="senha2" class="form-control">
         </div>
         <button class="btn btn-primary">
-            Cadastrar Usuario
+            Realizar Cadastro
+        </button>
+    </form>
+    <form action="/login" method="post">
+        <button class="btn btn-secondary">
+            Pagina de login
         </button>
     </form>
     

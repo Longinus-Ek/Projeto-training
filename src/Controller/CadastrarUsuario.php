@@ -2,6 +2,7 @@
 
 namespace Erick\Sistema\Controller;
 
+use PDO;
 use Nyholm\Psr7\Response;
 use Erick\Sistema\Entity\Usuario;
 use Psr\Http\Message\ResponseInterface;
@@ -9,6 +10,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Erick\Sistema\Helper\FlashMessageTrait;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+
 
 
 
@@ -25,7 +27,7 @@ class CadastrarUsuario implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $redirecionamentoCadastro = new Response(302, ['Location' => '/cadastro']);
-
+        
         $email = filter_input(
             INPUT_POST,
             'email',
@@ -64,24 +66,15 @@ class CadastrarUsuario implements RequestHandlerInterface
            
             return $redirecionamentoCadastro;
         }
-        
-        $usuario = new Usuario();
 
-        $id = filter_var(
-            $request->getQueryParams()['id'],
-            FILTER_VALIDATE_INT
-        );
-        
-
-        if (!is_null($id) && $id !== false) {         
-            return new Response(404, []);
-        } 
-
-        $usuario->setEmail($email);
         $senha = password_hash($senha, PASSWORD_ARGON2I); //Criptografando senha
-        $usuario->setSenha($senha);
-        $this->entityManager->persist($usuario);
-        $this->entityManager->flush();
+        //Conecxão banco via PDO
+        $caminhoBanco = __DIR__ . '/../../db.sqlite';
+        $pdo = new PDO(dsn: 'sqlite:' . $caminhoBanco);
+
+        $sqlInsert = ("INSERT INTO usuarios (email, senha) VALUES ('$email', '$senha');");
+        $pdo->exec($sqlInsert);
+       
         $this->defineMensagem('sucess', 'Usuario criado com sucesso');
 
         return $redirecionamentoCadastro;

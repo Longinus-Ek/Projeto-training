@@ -11,6 +11,7 @@ use Erick\Sistema\Helper\FlashMessageTrait;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+
 class Persistencia implements RequestHandlerInterface
 {
     use FlashMessageTrait;
@@ -39,16 +40,15 @@ class Persistencia implements RequestHandlerInterface
             $request->getQueryParams()['id'],
             FILTER_VALIDATE_INT
         );
-        var_dump($ordem);
         
         $tipo = 'success';
         if (!is_null($id) && $id !== false) {
             $ordem->setId($id);
             $this->entityManager->merge($ordem);
-            $this->defineMensagem($tipo, 'ordem atualizada com sucesso');
+            $this->defineMensagem($tipo, 'Ordem atualizada com sucesso');
         } else {
             $this->entityManager->persist($ordem);
-            $this->defineMensagem($tipo, 'ordem inserida com sucesso');
+            $this->defineMensagem($tipo, 'Ordem inserida com sucesso');
         }
 
         $this->entityManager->flush();

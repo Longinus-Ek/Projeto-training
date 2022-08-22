@@ -18,12 +18,13 @@ if (!array_key_exists($caminho, $rotas)) {
 session_start();
 
 $ehRotaDeCadastro = stripos($caminho, 'cadastro');
+$ehRotaDeLogin = stripos ($caminho, 'login');
 
-if (!isset($_SESSION['cadastro']) && $ehRotaDeCadastro === false){
+if (!isset($_SESSION['logado']) && $ehRotaDeLogin === false && $ehRotaDeCadastro === false){
+    header('Location: /login');
+} elseif (!isset($_SESSION['logado']) && $ehRotaDeLogin === true && $ehRotaDeCadastro === false){
     header('Location: /cadastro');
-    exit();
 }
-
 
 $psr17Factory = new Psr17Factory();
 
